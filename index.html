@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Campus Portal</title>
+
+  <!-- Tailwind (keeps your exact look) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide icons -->
+  <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body class="min-h-screen bg-white text-slate-900">
+  <!-- App shell -->
+  <div id="app" class="min-h-screen flex flex-col">
+    <!-- Header is injected here when logged in -->
+    <div id="header-slot"></div>
+
+    <!-- Page content -->
+    <main id="content" class="flex-1"></main>
+  </div>
+
+  <!-- Global scripts -->
+  <script src="./shared.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

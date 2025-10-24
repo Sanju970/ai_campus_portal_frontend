@@ -1,0 +1,26 @@
+<div id="ai-chat" class="fixed bottom-5 right-5 z-50">
+  <div id="ai-chat-box" class="hidden w-80 bg-white border rounded-xl shadow-lg overflow-hidden flex flex-col">
+    <div class="flex items-center justify-between p-3 bg-blue-600 text-white">
+      <div class="flex items-center gap-2">
+        <i data-lucide="bot" class="w-4 h-4"></i>
+        <span class="font-semibold text-sm">AI Assistant</span>
+      </div>
+      <button id="ai-close" class="hover:text-blue-200">&times;</button>
+    </div>
+
+    <div id="ai-messages" class="flex-1 p-3 space-y-2 overflow-y-auto text-sm text-slate-800">
+      <div class="bg-blue-50 text-blue-800 p-2 rounded-lg">
+        Hi! I’m your Campus AI Assistant. How can I help?
+      </div>
+    </div>
+
+    <div class="p-2 border-t flex gap-2">
+      <input id="ai-input" type="text" placeholder="Type a message..." class="flex-1 border rounded-lg px-3 py-1.5 text-sm"/>
+      <button id="ai-send" class="bg-blue-600 text-white px-3 rounded-lg hover:bg-blue-700 text-sm">Send</button>
+    </div>
+  </div>
+
+  <button id="ai-toggle" class="bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700">
+    <i data-lucide="bot" class="w-5 h-5"></i>
+  </button>
+</div>

@@ -1,0 +1,36 @@
+<header class="border-b bg-white/90 header-blur sticky top-0 z-50">
+  <div class="container-portal h-16 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center">
+        <i data-lucide="graduation-cap" class="text-white" style="width:20px;height:20px"></i>
+      </div>
+      <span class="font-semibold">Campus Portal</span>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-1">
+      <a href="#/home" class="px-3 py-2 rounded hover:bg-slate-100" data-nav="home">Home</a>
+      <a href="#/events" class="px-3 py-2 rounded hover:bg-slate-100" data-nav="events">Events</a>
+      <a href="#/announcements" class="px-3 py-2 rounded hover:bg-slate-100" data-nav="announcements">Announcements</a>
+      <a href="#/materials" class="px-3 py-2 rounded hover:bg-slate-100" data-nav="materials">Materials</a>
+      <a href="#/resources" class="px-3 py-2 rounded hover:bg-slate-100" data-nav="resources">Resources</a>
+      <a href="#/schedule" class="px-3 py-2 rounded hover:bg-slate-100" data-nav="schedule">Schedule</a>
+    </nav>
+
+    <div class="relative">
+      <button class="h-10 w-10 rounded-full bg-blue-600 text-white font-semibold avatar-ring" data-avatar>U</button>
+      <div class="absolute right-0 mt-2 w-64 bg-white border rounded dropdown-shadow hidden" data-dropdown>
+        <div class="p-3 space-y-1">
+          <p class="font-medium" data-user-name>User</p>
+          <p class="text-xs text-slate-500" data-user-email>user@campus.edu</p>
+          <p class="text-xs text-slate-500 capitalize" data-user-role>Role: student</p>
+        </div>
+        <div class="border-t my-2"></div>
+        <a href="#/profile" class="block px-3 py-2 hover:bg-slate-100"><i data-lucide="user" class="inline mr-2 w-4 h-4"></i>Profile</a>
+        <a href="#/notifications" class="block px-3 py-2 hover:bg-slate-100"><i data-lucide="bell" class="inline mr-2 w-4 h-4"></i>Notifications</a>
+        <a href="#/favorites" class="block px-3 py-2 hover:bg-slate-100"><i data-lucide="heart" class="inline mr-2 w-4 h-4"></i>Favorites</a>
+        <div class="border-t my-2"></div>
+        <button data-logout class="w-full text-left px-3 py-2 hover:bg-slate-100"><i data-lucide="log-out" class="inline mr-2 w-4 h-4"></i>Logout</button>
+      </div>
+    </div>
+  </div>
+</header>
