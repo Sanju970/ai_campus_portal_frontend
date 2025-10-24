@@ -1,0 +1,6 @@
+.announcement-card {
+  transition: background-color .15s ease;
+}
+.announcement-card:hover {
+  background-color: #f9fafb;
+}

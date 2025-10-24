@@ -1,0 +1,43 @@
+<section class="container-portal py-8 space-y-6">
+  <div class="flex items-start justify-between">
+    <div class="space-y-1">
+      <h2 class="text-2xl font-semibold">My Schedule</h2>
+      <p class="text-slate-500 text-sm">View and manage your weekly schedule</p>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1 border rounded-lg p-1">
+        <button class="px-3 py-1.5 rounded text-sm bg-slate-900 text-white" data-view="calendar">
+          <i data-lucide="calendar-days" class="w-4 h-4 inline mr-1"></i> Calendar
+        </button>
+        <button class="px-3 py-1.5 rounded text-sm hover:bg-slate-100" data-view="list">
+          <i data-lucide="list" class="w-4 h-4 inline mr-1"></i> List
+        </button>
+      </div>
+      <button class="px-3 py-1.5 rounded text-sm bg-slate-900 text-white flex items-center gap-1" data-open-dialog>
+        <i data-lucide="plus" class="w-4 h-4"></i> Add Event
+      </button>
+    </div>
+  </div>
+
+  <section class="border rounded-xl overflow-hidden" data-mode="calendar">
+    <div class="grid grid-cols-6 border-b bg-slate-50 text-sm">
+      <div class="p-3 border-r text-slate-500">Time</div>
+      <div class="p-3 border-r text-center">Monday</div>
+      <div class="p-3 border-r text-center">Tuesday</div>
+      <div class="p-3 border-r text-center">Wednesday</div>
+      <div class="p-3 border-r text-center">Thursday</div>
+      <div class="p-3 text-center">Friday</div>
+    </div>
+
+    <div class="grid grid-cols-6 relative">
+      <div class="border-r" data-times></div>
+      <div class="border-r relative" data-day="Monday"></div>
+      <div class="border-r relative" data-day="Tuesday"></div>
+      <div class="border-r relative" data-day="Wednesday"></div>
+      <div class="border-r relative" data-day="Thursday"></div>
+      <div class="relative" data-day="Friday"></div>
+    </div>
+  </section>
+
+  <section class="space-y-4 hidden" data-mode="list"></section>
+</section>

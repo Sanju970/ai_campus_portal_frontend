@@ -1,0 +1,7 @@
+[data-times] > div,
+[data-day] > div {
+  height: 4rem;
+}
+.event-chip {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}

@@ -61,7 +61,6 @@ async function render(route) {
   // Header
   renderHeader(route);
 
-  // Page load
   try {
     let html;
     if (route === 'login') {
@@ -72,7 +71,6 @@ async function render(route) {
       }
       content.innerHTML = html;
       if (window.lucide && lucide.createIcons) lucide.createIcons();
-      // Bind login
       const btn = content.querySelector('#login-submit');
       if (btn) {
         btn.addEventListener('click', () => {
@@ -86,15 +84,36 @@ async function render(route) {
       return;
     }
 
-    // Other pages
     if (!routes.has(route)) route = 'home';
     html = await loadHTML(`./pages/${route}.html`);
     content.innerHTML = html;
 
-    // Init icons after injection
-    if (window.lucide && lucide.createIcons) lucide.createIcons();
+    // --- automatic page JS/CSS loader ---
+    const cssPath = `pages/${route}.css`;
+    const jsPath = `pages/${route}.js`;
 
-    // Auto-load AI chat widget (once)
+    // inject CSS once
+    if (!document.querySelector(`link[href="${cssPath}"]`)) {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = cssPath;
+      document.head.appendChild(link);
+    }
+
+    // run JS if available
+    fetch(jsPath, { method: "HEAD" })
+      .then(res => {
+        if (res.ok) {
+          const script = document.createElement("script");
+          script.src = jsPath;
+          script.defer = true;
+          document.body.appendChild(script);
+        }
+      })
+      .catch(() => {});
+    // --- end loader ---
+
+    if (window.lucide && lucide.createIcons) lucide.createIcons();
     ensureAIChat();
   } catch (err) {
     content.innerHTML = `
@@ -108,7 +127,7 @@ async function render(route) {
   }
 }
 
-// AI Chat loader (expects /components/ai-chat.html)
+// AI Chat loader
 let chatLoaded = false;
 async function ensureAIChat() {
   if (chatLoaded) return;
@@ -119,10 +138,7 @@ async function ensureAIChat() {
     document.body.appendChild(wrap);
     chatLoaded = true;
     if (window.lucide && lucide.createIcons) lucide.createIcons();
-    // Optional: wire default open/close inside the component file
-  } catch {
-    // no-op if you haven't added it yet
-  }
+  } catch {}
 }
 
 // Router
