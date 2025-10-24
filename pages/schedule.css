@@ -1,7 +1,42 @@
-[data-times] > div,
-[data-day] > div {
-  height: 4rem;
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
 }
-.event-chip {
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+.view-controls .view-btn {
+  margin-left: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.view-btn.active {
+  background-color: #1e3a8a;
+  color: white;
+}
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 100px repeat(7, 1fr);
+  overflow-x: auto;
+  border-top: 1px solid #e5e7eb;
+}
+.time-slot, .schedule-slot {
+  border-bottom: 1px solid #e5e7eb;
+  height: 60px;
+  font-size: 0.8rem;
+  padding: 0.3rem;
+}
+.schedule-block {
+  margin: 2px;
+  padding: 4px;
+  border-radius: 6px;
+  color: white;
+  font-size: 0.75rem;
+}
+.schedule-list .schedule-item {
+  background: #f8fafc;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
 }

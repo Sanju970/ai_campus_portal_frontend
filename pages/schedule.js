@@ -1,64 +1,84 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const days = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
-  const timeSlots = Array.from({length: 11}, (_,i)=> 8 + i); // 8AM - 6PM
+function initSchedulePage() {
+  console.log("✅ schedule page initialized");
 
-  // Demo mock events (same as screenshot)
   const schedule = [
-    { title:'Computer Science 101', type:'class', day:'Monday', startTime:'09:00', endTime:'10:30', location:'Room 204, Science Building' },
-    { title:'English Literature',   type:'class', day:'Monday', startTime:'14:00', endTime:'15:30', location:'Room 301, Arts Building' },
-    { title:'Computer Science 101', type:'class', day:'Wednesday', startTime:'09:00', endTime:'10:30', location:'Room 204, Science Building' },
-    { title:'Mathematics 201',      type:'class', day:'Wednesday', startTime:'11:00', endTime:'12:30', location:'Room 105, Math Building' },
-    { title:'Mathematics 201',      type:'class', day:'Thursday',  startTime:'11:00', endTime:'12:30', location:'Room 105, Math Building' },
-    { title:'Study Group',          type:'event', day:'Thursday',  startTime:'13:00', endTime:'14:00', location:'Library, Room 203' },
-    { title:'English Literature',   type:'class', day:'Friday',    startTime:'14:00', endTime:'15:30', location:'Room 301, Arts Building' },
-    { title:'Physics Lab',          type:'meeting', day:'Wednesday', startTime:'16:00', endTime:'18:00', location:'Lab 5, Science Building' },
+    { title: "Math Lecture", day: "Monday", start: "09:00", end: "10:30", color: "bg-blue-500" },
+    { title: "English Seminar", day: "Tuesday", start: "11:00", end: "12:30", color: "bg-green-500" },
+    { title: "AI Lab", day: "Wednesday", start: "14:00", end: "15:30", color: "bg-purple-500" },
+    { title: "Project Meeting", day: "Thursday", start: "16:00", end: "17:00", color: "bg-orange-500" },
+    { title: "Sports Practice", day: "Friday", start: "10:00", end: "11:30", color: "bg-rose-500" },
   ];
 
-  const elTimes = document.querySelector('[data-times]');
-  const listView = document.querySelector('[data-mode="list"]');
+  const timeColumn = document.querySelector("[data-times]");
+  const dayColumns = document.querySelectorAll("[data-day]");
+  const viewButtons = document.querySelectorAll("[data-view]");
+  const listSection = document.querySelector('[data-mode="list"]');
+  const calendarSection = document.querySelector('[data-mode="calendar"]');
+  const addBtn = document.querySelector("[data-open-dialog]");
 
-  // Fill time labels
-  elTimes.innerHTML = timeSlots.map(h => {
-    const label = `${(h%12)||12}${h<12?'AM':'PM'}`;
-    return `<div class="border-b pr-2 flex items-start justify-end pt-1 text-xs text-slate-500">${label}</div>`;
-  }).join('');
+  // fill time column
+  const times = Array.from({ length: 10 }, (_, i) => `${8 + i}:00`);
+  timeColumn.innerHTML = times.map(t => `<div class="h-16 border-b px-2 text-xs text-slate-500">${t}</div>`).join("");
 
-  document.querySelectorAll('[data-day]').forEach(col => {
-    col.innerHTML = timeSlots.map(()=>`<div class="border-b"></div>`).join('') + `<div class="absolute inset-0 pointer-events-none"></div>`;
+  // draw grid slots
+  dayColumns.forEach(col => {
+    col.innerHTML = times.map(() => `<div class="h-16 border-b relative"></div>`).join("");
   });
 
-  function typeColor(t){
-    return {class:'bg-blue-500', meeting:'bg-orange-500', event:'bg-emerald-500', exam:'bg-rose-500'}[t] || 'bg-slate-500';
-  }
-  function calcStyle(ev){
-    const [sh,sm] = ev.startTime.split(':').map(Number);
-    const [eh,em] = ev.endTime.split(':').map(Number);
-    const startOffsetHrs = (sh - 8) + (sm/60);
-    const durHrs = (eh - sh) + (em - sm)/60;
-    return { top: `${startOffsetHrs * 4}rem`, height: `${durHrs * 4}rem` };
+  // place events
+  schedule.forEach(ev => {
+    const col = document.querySelector(`[data-day="${ev.day}"]`);
+    if (!col) return;
+    const [sh, sm] = ev.start.split(":").map(Number);
+    const [eh, em] = ev.end.split(":").map(Number);
+    const offset = ((sh - 8) + sm / 60) * 4; // rem offset from top
+    const height = ((eh - sh) + (em - sm) / 60) * 4;
+    const el = document.createElement("div");
+    el.className = `absolute left-1 right-1 rounded-md text-white text-[11px] p-2 ${ev.color}`;
+    el.style.top = `${offset}rem`;
+    el.style.height = `${height}rem`;
+    el.innerHTML = `<div class="font-medium">${ev.title}</div><div class="opacity-80">${ev.start}–${ev.end}</div>`;
+    col.appendChild(el);
+  });
+
+  // toggle list/calendar
+  viewButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const mode = btn.dataset.view;
+      viewButtons.forEach(b => b.classList.remove("bg-slate-900", "text-white"));
+      btn.classList.add("bg-slate-900", "text-white");
+      if (mode === "list") {
+        calendarSection.classList.add("hidden");
+        listSection.classList.remove("hidden");
+        renderListView();
+      } else {
+        listSection.classList.add("hidden");
+        calendarSection.classList.remove("hidden");
+      }
+    });
+  });
+
+  function renderListView() {
+    const html = schedule
+      .map(ev => `
+        <div class="border rounded-lg p-3 flex justify-between items-center">
+          <div>
+            <div class="font-semibold">${ev.title}</div>
+            <div class="text-slate-500 text-sm">${ev.day}, ${ev.start}–${ev.end}</div>
+          </div>
+          <div class="text-xs text-white px-2 py-1 rounded ${ev.color}">${ev.day}</div>
+        </div>
+      `)
+      .join("");
+    listSection.innerHTML = html;
   }
 
-  function renderCalendar(){
-    days.forEach(day => {
-      const overlay = document.querySelector(`[data-day="${day}"] > .absolute`);
-      overlay.innerHTML = '';
-      schedule.filter(e=>e.day===day).forEach(ev=>{
-        const chip = document.createElement('div');
-        chip.className = `absolute left-1 right-1 text-white rounded-md p-2 overflow-hidden event-chip ${typeColor(ev.type)}`;
-        const s = calcStyle(ev);
-        chip.style.top = s.top;
-        chip.style.height = s.height;
-        chip.innerHTML = `
-          <div class="text-[11px] leading-tight">
-            <div class="font-medium truncate">${ev.title}</div>
-            <div class="opacity-90">${ev.startTime} - ${ev.endTime}</div>
-            ${ev.location ? `<div class="opacity-80 truncate">${ev.location}</div>`:''}
-          </div>`;
-        overlay.appendChild(chip);
-      });
+  // Add-event demo (no backend)
+  if (addBtn) {
+    addBtn.addEventListener("click", () => {
+      alert("🧩 Add Event clicked — backend integration pending!");
     });
   }
 
-  renderCalendar();
   if (window.lucide && lucide.createIcons) lucide.createIcons();
-});
+}

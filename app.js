@@ -87,7 +87,6 @@ async function render(route) {
     if (!routes.has(route)) route = 'home';
     html = await loadHTML(`./pages/${route}.html`);
     content.innerHTML = html;
-
     // --- automatic page JS/CSS loader ---
     const cssPath = `pages/${route}.css`;
     const jsPath = `pages/${route}.js`;
@@ -112,6 +111,19 @@ async function render(route) {
       })
       .catch(() => {});
     // --- end loader ---
+
+    // wait a tick so HTML is in the DOM
+    setTimeout(() => {
+    // run schedule init if present
+    if (route === "schedule" && typeof initSchedulePage === "function") {
+        console.log("⚙️ Initializing schedule page after HTML injection");
+        initSchedulePage();
+    }
+
+    // icons and chat after init
+    if (window.lucide && lucide.createIcons) lucide.createIcons();
+    ensureAIChat();
+    }, 100);
 
     if (window.lucide && lucide.createIcons) lucide.createIcons();
     ensureAIChat();

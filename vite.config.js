@@ -5,10 +5,10 @@ export default defineConfig({
   publicDir: "assets",
   build: {
     outDir: "dist",
-    emptyOutDir: true
+    emptyOutDir: true,
   },
   server: {
     port: 5173,
-    open: true
-  }
+    open: true,
+  },
 });
