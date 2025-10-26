@@ -102,6 +102,9 @@ git clone https://github.com/Sanju970/ai_campus_portal_frontend.git
 # Navigate to the Project Directory
 cd ai_campus_portal_frontend
 
+# Clean old installations
+rm -rf node_modules package-lock.json
+
 # Install dependencies
 npm install
 

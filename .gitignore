@@ -1,6 +1,7 @@
 # dependencies
 node_modules
 dist
+build
 # IDE / system
 .vscode
 .DS_Store
