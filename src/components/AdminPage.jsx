@@ -82,9 +82,6 @@ export default function AdminPage() {
       {/* Header */}
       <div className="space-y-1 text-center">
         <h1 className="text-2xl font-semibold">User Management</h1>
-        <p className="text-muted-foreground">
-          Add or remove users from the system
-        </p>
       </div>
 
       {/* Add New User Form */}
