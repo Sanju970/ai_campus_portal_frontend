@@ -7,3 +7,6 @@
   if (!root) throw new Error("Root element not found");
   createRoot(root).render(<App />);
   
+if (import.meta.env.DEV) {
+  localStorage.clear();
+}
