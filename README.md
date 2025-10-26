@@ -48,7 +48,9 @@ It was developed for **Phase 2 – Front-End Development** using **Vite + React 
 | NotificationsPage.jsx | View alerts and messages. |
 | FavoritesPage.jsx | Manage bookmarked resources. |
 | AIChat.jsx | Integrated AI chatbot for quick help. |
-
+| AdminPage.jsx | Allows admins to manage users, roles, and access data. |
+| Layout.jsx | Centralized layout component managing navigation, header, and theme. |
+| ResourcesCard.jsx | Reusable card component used to display individual resource items. |
 ---
 
 ## UI & Design
