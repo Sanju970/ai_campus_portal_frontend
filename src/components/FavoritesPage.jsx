@@ -5,6 +5,7 @@ import { Badge } from './ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Calendar, MapPin, Users, Heart, Pin, AlertCircle, Info, AlertTriangle } from 'lucide-react';
 import { sampleEvents } from '../types/events';
+import { sampleMaterials } from '../types/materials';
 import { sampleAnnouncements } from '../types/announcements';
 import { toast } from 'sonner';
 
@@ -12,6 +13,22 @@ export default function FavoritesPage() {
   // Initialize with some favorites
   const [favoriteEventIds, setFavoriteEventIds] = useState(['1', '2']);
   const [favoriteAnnouncementIds, setFavoriteAnnouncementIds] = useState(['1', '3']);
+
+  const [favoriteMaterialIds, setFavoriteMaterialIds] = useState(() => {
+    try {
+      const saved = localStorage.getItem('favorite_material_ids');
+      return saved ? JSON.parse(saved) : [];
+    } catch { return []; }
+  });
+  const favoriteMaterials = sampleMaterials.filter(m => favoriteMaterialIds.includes(m.id));
+
+  const removeFavoriteMaterial = (materialId) => {
+    const next = favoriteMaterialIds.filter(id => id !== materialId);
+    setFavoriteMaterialIds(next);
+    try { localStorage.setItem('favorite_material_ids', JSON.stringify(next)); } catch {}
+    toast.info('Material removed from favorites');
+  };
+
 
   const favoriteEvents = sampleEvents.filter(event => favoriteEventIds.includes(event.id));
   const favoriteAnnouncements = sampleAnnouncements.filter(announcement => 
@@ -81,7 +98,8 @@ export default function FavoritesPage() {
           <TabsTrigger value="announcements">
             Announcements ({favoriteAnnouncements.length})
           </TabsTrigger>
-        </TabsList>
+          <TabsTrigger value="materials">Materials</TabsTrigger>
+</TabsList>
 
         {/* Favorite Events */}
         <TabsContent value="events" className="space-y-4 mt-6">

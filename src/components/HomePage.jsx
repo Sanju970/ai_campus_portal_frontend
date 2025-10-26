@@ -133,17 +133,22 @@ export default function HomePage({ onNavigate }) {
           {quickLinks.map((link, index) => {
             const Icon = link.icon;
             return (
-              <Card 
-                key={index} 
+              <Card
+                key={index}
                 className="hover:shadow-lg transition-shadow cursor-pointer"
                 onClick={() => onNavigate(link.page)}
               >
-                <CardHeader>
-                  <div className={`h-12 w-12 rounded-lg ${link.color} flex items-center justify-center mb-4`}>
-                    <Icon className="h-6 w-6 text-white" />
+                {/* fixed height + perfect centering */}
+                <div className="h-24 flex items-center justify-center px-4">
+                  <div className="flex items-center gap-3">
+                    <div className={`h-12 w-12 rounded-lg ${link.color} flex items-center justify-center`}>
+                      <Icon className="h-6 w-6 text-white" />
+                    </div>
+                    <CardTitle className="text-base font-medium m-0 leading-none">
+                      {link.title}
+                    </CardTitle>
                   </div>
-                  <CardTitle className="text-base">{link.title}</CardTitle>
-                </CardHeader>
+                </div>
               </Card>
             );
           })}

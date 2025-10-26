@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Card,
   CardContent,
@@ -17,7 +17,7 @@ import {
   Link as LinkIcon,
   Presentation,
   Database,
-  Star,
+  Heart,
   Upload,
 } from 'lucide-react';
 import {
@@ -43,7 +43,23 @@ export default function MaterialsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
-  const [favorites, setFavorites] = useState(['1', '3']);
+  // initialize from localStorage once
+  const [favorites, setFavorites] = useState(() => {
+    try {
+      const saved = localStorage.getItem('favorite_material_ids');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  // persist on change
+  useEffect(() => {
+    try {
+      localStorage.setItem('favorite_material_ids', JSON.stringify(favorites));
+    } catch {}
+  }, [favorites]);
+
   const [materials, setMaterials] = useState(sampleMaterials);
 
   const [newMaterial, setNewMaterial] = useState({
@@ -352,9 +368,9 @@ export default function MaterialsPage() {
                     size="icon"
                     onClick={() => toggleFavorite(material.id)}
                   >
-                    <Star
+                    <Heart
                       className={`h-4 w-4 ${
-                        isFavorite ? 'fill-yellow-500 text-yellow-500' : ''
+                        isFavorite ? 'fill-red-500 text-red-500' : ''
                       }`}
                     />
                   </Button>
