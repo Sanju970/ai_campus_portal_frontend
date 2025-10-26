@@ -122,3 +122,7 @@ npm run build
 ## License / Acknowledgment
 This project is developed for **UTA Front-End Development Phase 2** coursework.  
 All open-source packages follow their respective MIT licenses.
+
+
+npm install @radix-ui/react-avatar @radix-ui/react-tabs class-variance-authority
+npm install tailwindcss@3.4.13
