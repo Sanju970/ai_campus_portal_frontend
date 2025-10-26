@@ -98,8 +98,10 @@ export default function FavoritesPage() {
           <TabsTrigger value="announcements">
             Announcements ({favoriteAnnouncements.length})
           </TabsTrigger>
-          <TabsTrigger value="materials">Materials</TabsTrigger>
-</TabsList>
+          <TabsTrigger value="materials">
+            Materials ({favoriteMaterials.length})
+          </TabsTrigger>
+        </TabsList>
           {/* Favorite Materials */}
         <TabsContent value="materials" className="space-y-4 mt-6">
           {favoriteMaterials.length === 0 ? (
@@ -262,15 +264,19 @@ export default function FavoritesPage() {
         </TabsContent>
       </Tabs>
 
-      {/* Summary */}
-      <div className="grid grid-cols-2 gap-4 pt-8 border-t">
+      {/* Quick stats */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-8 border-t">
         <div className="text-center space-y-1">
-          <div className="text-3xl">{favoriteEvents.length}</div>
+          <div className="text-3xl font-semibold">{favoriteEvents.length}</div>
           <div className="text-sm text-muted-foreground">Favorite Events</div>
         </div>
         <div className="text-center space-y-1">
-          <div className="text-3xl">{favoriteAnnouncements.length}</div>
+          <div className="text-3xl font-semibold">{favoriteAnnouncements.length}</div>
           <div className="text-sm text-muted-foreground">Favorite Announcements</div>
+        </div>
+        <div className="text-center space-y-1">
+          <div className="text-3xl font-semibold">{favoriteMaterials.length}</div>
+          <div className="text-sm text-muted-foreground">Favorite Materials</div>
         </div>
       </div>
     </div>

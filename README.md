@@ -26,7 +26,6 @@ It was developed for **Phase 2 – Front-End Development** using **Vite + React 
 
 ### Authentication
 - Role-based login/signup (Student / Faculty / Admin).  
-- Signup restricted strictly to **@campus.edu** email addresses.  
 - Password strength meter and confirmation validation.  
 - Persistent “Remember Me” option with localStorage.
 
@@ -92,7 +91,7 @@ It was developed for **Phase 2 – Front-End Development** using **Vite + React 
   - Safari  
 
 ---
-## Environment Requirements
+## Environment Requirements (Required)
 
 ```bash
 Node.js 20.x or higher
