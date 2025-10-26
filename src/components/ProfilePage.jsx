@@ -56,7 +56,6 @@ export default function ProfilePage() {
   const RoleIcon = getRoleIcon();
 
   const handleSave = () => {
-    // In a real app, this would update the backend
     setIsEditing(false);
     toast.success('Profile updated successfully!');
   };

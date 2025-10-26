@@ -87,7 +87,7 @@ async function render(route) {
     if (!routes.has(route)) route = 'home';
     html = await loadHTML(`./pages/${route}.html`);
     content.innerHTML = html;
-    // --- automatic page JS/CSS loader ---
+    //  automatic page JS/CSS loader 
     const cssPath = `pages/${route}.css`;
     const jsPath = `pages/${route}.js`;
 

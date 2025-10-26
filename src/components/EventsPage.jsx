@@ -36,7 +36,7 @@ export default function EventsPage() {
     capacity: '',
     category_id: '',
     registration_required: false,
-    instructor_email: '', // student-only field
+    instructor_email: '',
   });
 
   // Everyone can create events
@@ -97,7 +97,7 @@ export default function EventsPage() {
       created_by: user?.id || '',
       created_by_name: user?.name,
       created_date: new Date().toISOString(),
-      is_active: user?.role === 'admin', // only admin auto-approve
+      is_active: user?.role === 'admin', 
       registered_count: 0,
     };
 

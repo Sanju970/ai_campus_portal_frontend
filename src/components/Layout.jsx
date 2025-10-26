@@ -70,66 +70,64 @@ export default function Layout({ children, currentPage, onNavigate, notification
           </nav>
 
           {/* User Menu */}
-<DropdownMenu>
-  <DropdownMenuTrigger asChild>
-    <div className="relative cursor-pointer rounded-full hover:ring-2 hover:ring-primary/40 transition-all">
-      <Avatar className="h-10 w-10">
-        <AvatarFallback className={`${getRoleBadgeColor(user?.role || '')} text-white font-semibold`}>
-          {user?.name?.charAt(0).toUpperCase() || 'U'}
-        </AvatarFallback>
-      </Avatar>
-    </div>
-  </DropdownMenuTrigger>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <div className="relative cursor-pointer rounded-full hover:ring-2 hover:ring-primary/40 transition-all">
+                <Avatar className="h-10 w-10">
+                  <AvatarFallback className={`${getRoleBadgeColor(user?.role || '')} text-white font-semibold`}>
+                    {user?.name?.charAt(0).toUpperCase() || 'U'}
+                  </AvatarFallback>
+                </Avatar>
+              </div>
+            </DropdownMenuTrigger>
 
-  <DropdownMenuContent align="end" className="w-56">
-    <DropdownMenuLabel>
-      <div className="flex flex-col space-y-1">
-        <p className="font-medium">{user?.name || 'User'}</p>
-        <p className="text-xs text-muted-foreground">{user?.email || 'user@email.com'}</p>
-        <p className="text-xs text-muted-foreground capitalize">
-          Role: {user?.role || 'student'}
-        </p>
-      </div>
-    </DropdownMenuLabel>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuLabel>
+                <div className="flex flex-col space-y-1">
+                  <p className="font-medium">{user?.name || 'User'}</p>
+                  <p className="text-xs text-muted-foreground">{user?.email || 'user@email.com'}</p>
+                  <p className="text-xs text-muted-foreground capitalize">
+                    Role: {user?.role || 'student'}
+                  </p>
+                </div>
+              </DropdownMenuLabel>
 
-    <DropdownMenuSeparator />
+              <DropdownMenuSeparator />
 
-    <DropdownMenuItem onClick={() => onNavigate('profile')}>
-      <User className="mr-2 h-4 w-4" />
-      Profile Settings
-    </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => onNavigate('profile')}>
+                <User className="mr-2 h-4 w-4" />
+                Profile Settings
+              </DropdownMenuItem>
 
-    <DropdownMenuItem onClick={() => onNavigate('notifications')}>
-      <Bell className="mr-2 h-4 w-4" />
-      Notifications
-      {notificationCount > 0 && (
-        <Badge variant="destructive" className="ml-auto h-5 px-1.5">
-          {notificationCount}
-        </Badge>
-      )}
-    </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => onNavigate('notifications')}>
+                <Bell className="mr-2 h-4 w-4" />
+                Notifications
+                {notificationCount > 0 && (
+                  <Badge variant="destructive" className="ml-auto h-5 px-1.5">
+                    {notificationCount}
+                  </Badge>
+                )}
+              </DropdownMenuItem>
 
-    <DropdownMenuItem onClick={() => onNavigate('favorites')}>
-      <Heart className="mr-2 h-4 w-4" />
-      Favorites
-    </DropdownMenuItem>
-    {user?.role === 'admin' && (
-      <DropdownMenuItem onClick={() => onNavigate('admin')}>
-        <Users className="mr-2 h-4 w-4" />
-        User Data
-      </DropdownMenuItem>
-    )}
+              <DropdownMenuItem onClick={() => onNavigate('favorites')}>
+                <Heart className="mr-2 h-4 w-4" />
+                Favorites
+              </DropdownMenuItem>
+              {user?.role === 'admin' && (
+                <DropdownMenuItem onClick={() => onNavigate('admin')}>
+                  <Users className="mr-2 h-4 w-4" />
+                  User Data
+                </DropdownMenuItem>
+              )}
 
-    <DropdownMenuSeparator />
+              <DropdownMenuSeparator />
 
-    <DropdownMenuItem onClick={logout}>
-      <LogOut className="mr-2 h-4 w-4" />
-      Logout
-    </DropdownMenuItem>
-  </DropdownMenuContent>
-</DropdownMenu>
-
-
+              <DropdownMenuItem onClick={logout}>
+                <LogOut className="mr-2 h-4 w-4" />
+                Logout
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </header>
 

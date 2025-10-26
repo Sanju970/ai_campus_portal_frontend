@@ -43,7 +43,6 @@ export default function MaterialsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
-  // initialize from localStorage once
   const [favorites, setFavorites] = useState(() => {
     try {
       const saved = localStorage.getItem('favorite_material_ids');
@@ -172,7 +171,7 @@ export default function MaterialsPage() {
           </p>
         </div>
 
-        {/* 👩‍🏫 Upload Button for Faculty/Admin */}
+        {/* Upload Button for Faculty/Admin */}
         {isFaculty && (
           <Dialog open={isUploadDialogOpen} onOpenChange={setIsUploadDialogOpen}>
             <DialogTrigger asChild>
