@@ -92,6 +92,13 @@ It was developed for **Phase 2 – Front-End Development** using **Vite + React 
   - Safari  
 
 ---
+## Environment Requirements
+
+```bash
+Node.js 20.x or higher
+npm 9.x or higher
+```
+Older Node versions (like 10, 12, or 14) will cause build failures because Vite, React Router 7, and SWC require modern ES Modules.
 
 ## Installation & Setup Guide
 
