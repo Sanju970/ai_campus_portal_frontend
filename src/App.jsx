@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import LoginPage from './components/LoginPage';
 import Layout from './components/Layout';
@@ -16,11 +16,15 @@ import { Toaster } from './components/ui/sonner';
 import { sampleNotifications } from './types/notifications';
 import AdminPage from './components/AdminPage';
 
-
 function AppContent() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const [currentPage, setCurrentPage] = useState('home');
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      setCurrentPage('home');
+    }
+  }, [isAuthenticated]);
   if (!isAuthenticated) {
     return <LoginPage />;
   }
@@ -29,28 +33,17 @@ function AppContent() {
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'home':
-        return <HomePage onNavigate={setCurrentPage} />;
-      case 'events':
-        return <EventsPage />;
-      case 'announcements':
-        return <AnnouncementsPage />;
-      case 'materials':
-        return <MaterialsPage />;
-      case 'resources':
-        return <ResourcesPage />;
-      case 'schedule':
-        return <SchedulePage />;
-      case 'profile':
-        return <ProfilePage />;
-      case 'notifications':
-        return <NotificationsPage />;
-      case 'favorites':
-        return <FavoritesPage />;
-      case 'admin':
-        return <AdminPage />;
-      default:
-        return <HomePage onNavigate={setCurrentPage} />;
+      case 'home': return <HomePage onNavigate={setCurrentPage} />;
+      case 'events': return <EventsPage />;
+      case 'announcements': return <AnnouncementsPage />;
+      case 'materials': return <MaterialsPage />;
+      case 'resources': return <ResourcesPage />;
+      case 'schedule': return <SchedulePage />;
+      case 'profile': return <ProfilePage />;
+      case 'notifications': return <NotificationsPage />;
+      case 'favorites': return <FavoritesPage />;
+      case 'admin': return <AdminPage />;
+      default: return <HomePage onNavigate={setCurrentPage} />;
     }
   };
 

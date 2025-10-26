@@ -14,9 +14,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = async (email, password, role) => {
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 500));
-
     const mockUser = {
       id: Math.random().toString(36).substr(2, 9),
       email,
@@ -37,7 +35,6 @@ export function AuthProvider({ children }) {
   };
 
   const signup = async (email, password, name, role) => {
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 500));
 
     const mockUser = {
