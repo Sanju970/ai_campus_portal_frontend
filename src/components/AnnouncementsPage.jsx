@@ -64,7 +64,7 @@ export default function AnnouncementsPage() {
     expiry_date: '',
   });
 
-  const canCreate = ['faculty', 'admin', 'student'].includes(user?.role || '');
+  const canCreate = ['faculty', 'admin'].includes(user?.role || '');
 
   // ---- Create ----
   const handleCreateAnnouncement = () => {
