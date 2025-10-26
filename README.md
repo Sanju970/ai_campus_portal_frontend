@@ -1,33 +1,124 @@
-# 🎓 AI Campus Portal (Frontend)
+# AI Campus Resources Portal – Phase 2: Front-End Development
 
-An **AI-integrated campus resources portal** built using **HTML, CSS (Tailwind)**, and **JavaScript** with **Vite**.  
-This project is designed as a modular frontend — no backend required for the demo.
+**Team Members:**  
+- **Sanjana Tankala** – 1002230659
+- **Sai Sruthi Renati** – 1002152041
+- **Pritesh Sorathia** – 1002238997
+- **Areeb Khan** – 1001934043
+- **Harshini Yallabandi** – 1002232400
+- **Celina Ann Thomas** – 1002234178
 
----
-
-## 🚀 Features
-- Responsive modern UI using Tailwind CSS  
-- Dynamic page routing via hash router  
-- Modular pages for Home, Events, Materials, Schedule, etc.  
-- AI Chat widget available on every page  
-- Mock data for Materials & Schedule (no backend)  
-- Add Event form and list/calendar toggle (frontend-only)
+**Hosted Link:**  
+[https://sxt0660.uta.cloud/](https://sxt0660.uta.cloud/)
 
 ---
 
-## 🛠️ Tech Stack
-- **Vite** — fast dev server and bundler  
-- **Tailwind CSS** — utility-first styling  
-- **Lucide Icons** — modern icon library  
-- **Vanilla JS** — no frameworks, clean modular structure  
+## Project Overview
+The **AI Campus Resources Portal** is a modern React web app that provides students, faculty, and administrators with access to campus materials, events, announcements, and an integrated AI assistant.  
+It was developed for **Phase 2 – Front-End Development** using **Vite + React 18**, **Tailwind CSS**, and **shadcn/ui** components.
 
 ---
 
-## 📦 Installation
+## Features Implemented
 
-Clone this repository and install dependencies:
+### Authentication
+- Role-based login/signup (Student / Faculty / Admin).  
+- Signup restricted strictly to **@campus.edu** email addresses.  
+- Password strength meter and confirmation validation.  
+- Persistent “Remember Me” option with localStorage.
+
+### Navigation & Layout
+- Centralized navigation handled through `Layout.jsx`.  
+- Profile dropdown provides quick links to **Profile**, **Notifications**, **Favorites**, and **User Data (Admin-only)**.  
+- Dynamic rendering of components based on current page and role.
+
+### Pages Included
+| Page | Description |
+|------|--------------|
+| LoginPage.jsx | Handles secure login and signup with validation. |
+| HomePage.jsx | Main dashboard after authentication. |
+| EventsPage.jsx | Displays upcoming campus events. |
+| AnnouncementsPage.jsx | Lists announcements and notices. |
+| MaterialsPage.jsx | Repository of learning materials. |
+| ResourcesPage.jsx | Resource cards with categorized links. |
+| SchedulePage.jsx | Weekly class or event schedule. |
+| ProfilePage.jsx | View and edit user information. |
+| NotificationsPage.jsx | View alerts and messages. |
+| FavoritesPage.jsx | Manage bookmarked resources. |
+| AIChat.jsx | Integrated AI chatbot for quick help. |
+
+---
+
+## UI & Design
+- Built entirely with **Tailwind CSS v4**.  
+- Uses **Radix UI + shadcn/ui** components for accessibility and consistency.  
+- Icon set from **Lucide React**.  
+- Responsive design tested on mobile, tablet, and desktop.  
+- Dark-mode ready through `next-themes`.
+
+---
+
+## Technical Stack
+
+| Category | Technology |
+|-----------|-------------|
+| Framework | React 18.3.1 + Vite 6.3.5 |
+| Language | JavaScript (JSX) |
+| Styling | Tailwind CSS |
+| UI Library | shadcn/ui & Radix UI |
+| Icons | Lucide React |
+| Notifications | Sonner v2.0.3 |
+| Hosting | UTA Cloud |
+| Build Tool | Vite + SWC plugin for React |
+
+---
+
+## AI Integration
+- **AIChat.jsx** embeds an intelligent assistant for campus queries.  
+- Design optimization and accessibility improvements guided by AI suggestions during development.
+
+---
+
+## Accessibility & Testing
+- ARIA labels and roles included for screen-reader support.  
+- Keyboard navigation and focus states verified.  
+- Cross-browser compatibility confirmed on:  
+  - Chrome  
+  - Firefox  
+  - Edge  
+  - Safari  
+
+---
+
+## Running the Project
 
 ```bash
-git clone https://github.com/Sanju970/ai_campus_portal_frontend.git
-cd ai_campus_portal_frontend
+# Install dependencies
 npm install
+
+# Run in development mode
+npm run dev
+
+# Build optimized production files
+npm run build
+```
+
+---
+
+## Deployment on UTA Cloud
+1. Run `npm run build` to generate the `build/` folder.  
+2. Uploaded contents of `build/` (e.g., `index.html`, `assets/`) to UTA Cloud `public_html` directory.  
+3. Access the app at [https://sxt0660.uta.cloud](https://sxt0660.uta.cloud).  
+4. File structure looks like:
+   ```
+   public_html/
+     ├── assets/
+     ├── index.html
+     └── ...
+   ```
+
+---
+
+## License / Acknowledgment
+This project is developed for **UTA Front-End Development Phase 2** coursework.  
+All open-source packages follow their respective MIT licenses.
