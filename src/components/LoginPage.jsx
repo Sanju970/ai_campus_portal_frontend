@@ -432,7 +432,7 @@ export default function LoginPage() {
         <Card className="bg-muted/50">
           <CardContent className="pt-6">
             <p className="text-sm text-muted-foreground text-center">
-              This is a demo application. Use any campus email and password to login. <br />
+              This is a demo application. Use any email and password to login. <br />
               Facing issues? Contact admindemo@campus.edu
             </p>
           </CardContent>

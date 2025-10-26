@@ -11,6 +11,9 @@
 **Hosted Link:**  
 [https://sxt0660.uta.cloud/](https://sxt0660.uta.cloud/)
 
+**GitHub Repository:**
+[https://github.com/Sanju970/ai_campus_portal_frontend](https://github.com/Sanju970/ai_campus_portal_frontend)
+
 ---
 
 ## Project Overview
@@ -90,9 +93,15 @@ It was developed for **Phase 2 – Front-End Development** using **Vite + React 
 
 ---
 
-## Running the Project
+## Installation & Setup Guide
 
 ```bash
+# Clone the Repository
+git clone https://github.com/Sanju970/ai_campus_portal_frontend.git
+
+# Navigate to the Project Directory
+cd ai_campus_portal_frontend
+
 # Install dependencies
 npm install
 
@@ -106,8 +115,8 @@ npm run build
 ---
 
 ## Deployment on UTA Cloud
-1. Run `npm run build` to generate the `build/` folder.  
-2. Uploaded contents of `build/` (e.g., `index.html`, `assets/`) to UTA Cloud `public_html` directory.  
+1. Run `npm run build` to generate the `build/ or dist/` folder.  
+2. Uploaded contents of `build/ or dist/` (e.g., `index.html`, `assets/`) to UTA Cloud `public_html` directory.  
 3. Access the app at [https://sxt0660.uta.cloud](https://sxt0660.uta.cloud).  
 4. File structure looks like:
    ```
@@ -118,11 +127,14 @@ npm run build
    ```
 
 ---
+## External References
 
+* [shadcn/ui](https://ui.shadcn.com) used under MIT License
+* [Radix UI](https://www.radix-ui.com) for accessible React components
+* [Figma](https://www.figma.com) used for UI design reference
+* [Lucide Icons](https://lucide.dev) for icon assets
+* [Unsplash](https://unsplash.com) for freely licensed images
+---
 ## License / Acknowledgment
 This project is developed for **UTA Front-End Development Phase 2** coursework.  
 All open-source packages follow their respective MIT licenses.
-
-
-<!-- npm install @radix-ui/react-avatar @radix-ui/react-tabs class-variance-authority -->
-<!-- npm install tailwindcss@3.4.13 -->
