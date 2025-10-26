@@ -34,11 +34,9 @@ export default function LoginPage() {
   const [showLoginPassword, setShowLoginPassword] = useState(false);
   const [showSignupPassword, setShowSignupPassword] = useState(false);
   const [showSignupConfirm, setShowSignupConfirm] = useState(false);
-
-  const allowedEduDomains = ['campus.edu'];
-  const isEduEmail = allowedEduDomains.some((d) =>
-    signupEmail.trim().toLowerCase().endsWith('@' + d)
-  );
+  //email
+  const isEduEmail = /^[^\s@]+@[^\s@]+\.edu$/i.test(signupEmail.trim());
+  
   const passwordsMatch =
     signupPassword.length > 0 && signupPassword === signupConfirmPassword;
 
