@@ -33,7 +33,7 @@ export default function HomePage({ onNavigate }) {
           stats: [
             { label: 'Current Courses', value: '4', icon: BookOpen },
             { label: 'Upcoming Classes', value: '2', icon: Clock },
-            { label: 'Notifications', value: '5', icon: Bell },
+            { label: 'Notifications', value: '4', icon: Bell },
           ],
         };
       case 'faculty':
