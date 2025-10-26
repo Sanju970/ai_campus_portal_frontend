@@ -113,6 +113,14 @@ npm run build
 ```
 
 ---
+## Demo Login Credentials
+You can use the following test accounts to explore different roles in the portal:
+| Role| Email| Password|
+|-|-|-|
+| **Student**|[student@campus.edu](mailto:student@campus.edu)|student123 |
+| **Faculty**|[faculty@campus.edu](mailto:faculty@campus.edu)|faculty123 |
+| **Admin**|[admin@campus.edu](mailto:admin@campus.edu)|admin123|
+
 
 ## Deployment on UTA Cloud
 1. Run `npm run build` to generate the `build/ or dist/` folder.  
