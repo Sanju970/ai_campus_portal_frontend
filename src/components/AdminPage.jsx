@@ -29,7 +29,7 @@ export default function AdminPage() {
       email: 'alice@campus.edu',
       userId: 'alice01',
       role: 'student',
-      department: 'Computer Science',
+      department: 'Computer Science (CSE)',
     },
     {
       id: '2',
@@ -38,7 +38,7 @@ export default function AdminPage() {
       email: 'smith@campus.edu',
       userId: 'smith02',
       role: 'faculty',
-      department: 'Engineering',
+      department: 'Engineering (ECE)',
     },
   ]);
 
@@ -54,10 +54,13 @@ export default function AdminPage() {
   const handleAddUser = () => {
     const { firstName, lastName, email, userId, department } = newUser;
     if (!firstName || !lastName || !email || !userId || !department) {
-      toast.error('Please fill in all fields');
+      toast.error('Please fill in all fields.');
       return;
     }
-    setUsers((prev) => [...prev, { id: crypto.randomUUID(), ...newUser }]);
+    setUsers((prev) => [
+      ...prev,
+      { id: crypto.randomUUID(), ...newUser },
+    ]);
     setNewUser({
       firstName: '',
       lastName: '',
@@ -66,18 +69,18 @@ export default function AdminPage() {
       role: 'student',
       department: '',
     });
-    toast.success('User added successfully');
+    toast.success('User added successfully.');
   };
 
   const handleDeleteUser = (id) => {
     setUsers((prev) => prev.filter((u) => u.id !== id));
-    toast.info('User deleted');
+    toast.info('User deleted successfully.');
   };
 
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-8">
       {/* Header */}
-      <div className="space-y-1">
+      <div className="space-y-1 text-center">
         <h1 className="text-2xl font-semibold">User Management</h1>
         <p className="text-muted-foreground">
           Add or remove users from the system
@@ -87,7 +90,7 @@ export default function AdminPage() {
       {/* Add New User Form */}
       <Card>
         <CardHeader>
-          <CardTitle>Add New User</CardTitle>
+          <CardTitle className="text-center">Add New User</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <Input
@@ -119,6 +122,7 @@ export default function AdminPage() {
             }
           />
 
+          {/* Role Dropdown */}
           <Select
             value={newUser.role}
             onValueChange={(value) => setNewUser({ ...newUser, role: value })}
@@ -144,14 +148,22 @@ export default function AdminPage() {
               <SelectValue placeholder="Select Department" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="CSE">Computer Science (CSE)</SelectItem>
-              <SelectItem value="ECE">Electronics (ECE)</SelectItem>
-              <SelectItem value="IT">Information Technology (IT)</SelectItem>
-              <SelectItem value="MECH">
+              <SelectItem value="Computer Science (CSE)">
+                Computer Science (CSE)
+              </SelectItem>
+              <SelectItem value="Electronics (ECE)">
+                Electronics (ECE)
+              </SelectItem>
+              <SelectItem value="Information Technology (IT)">
+                Information Technology (IT)
+              </SelectItem>
+              <SelectItem value="Mechanical Engineering (MECH)">
                 Mechanical Engineering (MECH)
               </SelectItem>
-              <SelectItem value="CIVIL">Civil Engineering (CIVIL)</SelectItem>
-              <SelectItem value="EEE">
+              <SelectItem value="Civil Engineering (CIVIL)">
+                Civil Engineering (CIVIL)
+              </SelectItem>
+              <SelectItem value="Electrical & Electronics (EEE)">
                 Electrical & Electronics (EEE)
               </SelectItem>
             </SelectContent>
@@ -169,39 +181,37 @@ export default function AdminPage() {
       {/* Existing Users Table */}
       <Card>
         <CardHeader>
-          <CardTitle>Existing Users ({users.length})</CardTitle>
+          <CardTitle className="text-center">
+            Existing Users ({users.length})
+          </CardTitle>
         </CardHeader>
-        <CardContent className="overflow-x-auto">
+        <CardContent className="overflow-x-auto relative">
           {users.length === 0 ? (
             <p className="text-center text-muted-foreground py-8">
               No users found
             </p>
           ) : (
-            <div className="overflow-x-auto">
-              <Table className="w-full table-fixed border-collapse text-sm">
+            <div className="overflow-x-auto border rounded-lg">
+              <Table className="w-full table-fixed border-collapse text-sm text-center align-middle">
                 <colgroup>
-                  <col className="w-[14%]" />
-                  <col className="w-[16%]" />
-                  <col className="w-[16%]" />
-                  <col className="w-[22%]" />
-                  <col className="w-[12%]" />
-                  <col className="w-[16%]" />
-                  <col className="w-[8%]" />
+                  <col className="w-[10%]" />
+                  <col className="w-[15%]" />
+                  <col className="w-[15%]" />
+                  <col className="w-[25%]" />
+                  <col className="w-[10%]" />
+                  <col className="w-[20%]" />
+                  <col className="w-[5%]" />
                 </colgroup>
 
-                <TableHeader>
-                  <TableRow className="bg-muted/30">
-                    <TableHead className="px-3 py-2 text-left">User ID</TableHead>
-                    <TableHead className="px-3 py-2 text-left">
-                      First Name
-                    </TableHead>
-                    <TableHead className="px-3 py-2 text-left">Last Name</TableHead>
-                    <TableHead className="px-3 py-2 text-left">Email</TableHead>
-                    <TableHead className="px-3 py-2 text-left">Role</TableHead>
-                    <TableHead className="px-3 py-2 text-left">
-                      Department
-                    </TableHead>
-                    <TableHead className="px-3 py-2 text-right">Action</TableHead>
+                <TableHeader className="sticky top-0 bg-muted/60">
+                  <TableRow className="border-b">
+                    <TableHead className="px-4 py-3">User ID</TableHead>
+                    <TableHead className="px-4 py-3">First Name</TableHead>
+                    <TableHead className="px-4 py-3">Last Name</TableHead>
+                    <TableHead className="px-4 py-3">Email</TableHead>
+                    <TableHead className="px-4 py-3">Role</TableHead>
+                    <TableHead className="px-4 py-3">Department</TableHead>
+                    <TableHead className="px-4 py-3">Action</TableHead>
                   </TableRow>
                 </TableHeader>
 
@@ -209,22 +219,22 @@ export default function AdminPage() {
                   {users.map((u) => (
                     <TableRow
                       key={u.id}
-                      className="border-b border-border/50 hover:bg-muted/20 transition-colors"
+                      className="border-b hover:bg-muted/20 transition-colors"
                     >
-                      <TableCell className="px-3 py-2 text-left font-mono text-muted-foreground">
+                      <TableCell className="px-4 py-3 align-middle font-mono text-muted-foreground">
                         {u.userId}
                       </TableCell>
-                      <TableCell className="px-3 py-2 text-left">{u.firstName}</TableCell>
-                      <TableCell className="px-3 py-2 text-left">{u.lastName}</TableCell>
-                      <TableCell className="px-3 py-2 text-left">{u.email}</TableCell>
-                      <TableCell className="px-3 py-2 text-left capitalize">{u.role}</TableCell>
-                      <TableCell className="px-3 py-2 text-left">{u.department}</TableCell>
-                      <TableCell className="px-3 py-2 text-right">
+                      <TableCell className="px-4 py-3">{u.firstName}</TableCell>
+                      <TableCell className="px-4 py-3">{u.lastName}</TableCell>
+                      <TableCell className="px-4 py-3">{u.email}</TableCell>
+                      <TableCell className="px-4 py-3 capitalize">{u.role}</TableCell>
+                      <TableCell className="px-4 py-3">{u.department}</TableCell>
+                      <TableCell className="px-4 py-3">
                         <Button
                           variant="destructive"
                           size="sm"
                           onClick={() => handleDeleteUser(u.id)}
-                          className="inline-flex items-center gap-1"
+                          className="mx-auto flex justify-center items-center gap-1"
                         >
                           <Trash2 className="h-4 w-4" /> Delete
                         </Button>
