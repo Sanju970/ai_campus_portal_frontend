@@ -100,49 +100,49 @@ export default function FavoritesPage() {
           </TabsTrigger>
           <TabsTrigger value="materials">Materials</TabsTrigger>
 </TabsList>
-        {/* Favorite Events */}
-        <TabsContent value="events" className="space-y-4 mt-6">
-          {favoriteEvents.length === 0 ? (
+          {/* Favorite Materials */}
+        <TabsContent value="materials" className="space-y-4 mt-6">
+          {favoriteMaterials.length === 0 ? (
             <Card>
               <CardContent className="py-12 text-center">
                 <Heart className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                <p className="text-muted-foreground">No favorite events yet</p>
+                <p className="text-muted-foreground">No favorite materials yet</p>
                 <p className="text-sm text-muted-foreground mt-2">
-                  Click the heart icon on events to save them here
+                  Click the heart icon on materials to save them here
                 </p>
               </CardContent>
             </Card>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {favoriteEvents.map((event) => (
-                <Card key={event.id} className="hover:shadow-lg transition-shadow">
+              {favoriteMaterials.map((material) => (
+                <Card key={material.id} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <div className="flex items-start justify-between mb-2">
-                      <Badge>{event.category_id}</Badge>
+                      <Badge>{material.category_id}</Badge>
                       <Button
                         variant="ghost"
                         size="icon"
-                        onClick={() => removeFavoriteEvent(event.id)}
+                        onClick={() => removeFavoriteMaterial(material.id)}
                       >
                         <Heart className="h-4 w-4 fill-red-500 text-red-500" />
                       </Button>
                     </div>
-                    <CardTitle className="text-lg">{event.title}</CardTitle>
-                    <CardDescription>{event.description}</CardDescription>
+                    <CardTitle className="text-lg">{material.title}</CardTitle>
+                    <CardDescription>{material.description}</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-2 text-sm">
                     <div className="flex items-center gap-2">
                       <Calendar className="h-4 w-4 text-muted-foreground" />
-                      <span>{formatDateTime(event.date_time)}</span>
+                      <span>{formatDateTime(material.date_time)}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <MapPin className="h-4 w-4 text-muted-foreground" />
-                      <span>{event.location}</span>
+                      <span>{material.location}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Users className="h-4 w-4 text-muted-foreground" />
                       <span>
-                        {event.registered_count || 0} / {event.capacity} registered
+                        {material.registered_count || 0} / {material.capacity} registered
                       </span>
                     </div>
                   </CardContent>
@@ -151,7 +151,6 @@ export default function FavoritesPage() {
             </div>
           )}
         </TabsContent>
-
 
         {/* Favorite Events */}
         <TabsContent value="events" className="space-y-4 mt-6">
