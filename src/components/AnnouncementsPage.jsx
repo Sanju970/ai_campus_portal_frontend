@@ -333,13 +333,15 @@ export default function AnnouncementsPage() {
               {p.charAt(0).toUpperCase() + p.slice(1)}
             </Button>
           ))}
-          <Button
-            variant={filterMine ? 'default' : 'outline'}
-            size="sm"
-            onClick={() => setFilterMine(!filterMine)}
-          >
-            My Announcements
-          </Button>
+          {user?.role !== 'student' && (
+            <Button
+              variant={filterMine ? 'default' : 'outline'}
+              size="sm"
+              onClick={() => setFilterMine(!filterMine)}
+            >
+              My Announcements
+            </Button>
+          )}
         </div>
       </div>
 
