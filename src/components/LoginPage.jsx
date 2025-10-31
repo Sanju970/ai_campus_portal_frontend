@@ -26,7 +26,7 @@ export default function LoginPage() {
   const [signupPassword, setSignupPassword] = useState('');
   const [signupConfirmPassword, setSignupConfirmPassword] = useState('');
   const [signupUserId, setSignupUserId] = useState('');
-  const [signupBio, setSignupBio] = useState('');
+  //const [signupBio, setSignupBio] = useState('');
   const [signupRole, setSignupRole] = useState('student');
   const [acceptedTerms, setAcceptedTerms] = useState(false);
 
@@ -283,8 +283,8 @@ export default function LoginPage() {
                     />
                   </div>
 
-                  {/* Bio */}
-                  <div className="space-y-2">
+                 {/* Bio */}
+                  {/*<div className="space-y-2">
                     <Label>Bio (Optional)</Label>
                     <textarea
                       rows="3"
@@ -293,7 +293,8 @@ export default function LoginPage() {
                       value={signupBio}
                       onChange={(e) => setSignupBio(e.target.value)}
                     />
-                  </div>
+                  </div>*/}
+                
 
                   {/* Email */}
                   <div className="space-y-2">

@@ -54,7 +54,7 @@ async function render(route) {
 
   // Guarded routes
   if (!user && route !== 'login') {
-    location.hash = '#/login';
+    location.assign('#/');
     return;
   }
 
@@ -78,7 +78,7 @@ async function render(route) {
           const name = email.split('@')[0];
           const role = (content.querySelector('#login-role').value || 'student').toLowerCase();
           AppState.setUser({ name, email, role });
-          location.hash = '#/home';
+          location.assign('#/home');
         });
       }
       return;

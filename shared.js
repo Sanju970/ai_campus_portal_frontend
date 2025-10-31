@@ -102,7 +102,7 @@ window.renderHeader = function renderHeader(currentRoute) {
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
       AppState.clearUser();
-      location.hash = '#/login';
+      location.assign('#/login');
     });
   }
 };
