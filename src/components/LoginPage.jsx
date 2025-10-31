@@ -116,7 +116,7 @@ export default function LoginPage() {
         signupRole,
         {
           userId: signupUserId,
-          bio: signupBio,
+          // bio: signupBio,
         }
       );
       toast.success('Account created successfully!');
