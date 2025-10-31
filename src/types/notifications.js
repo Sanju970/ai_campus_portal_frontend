@@ -31,11 +31,11 @@ export const sampleNotifications = [
   {
     id: '3',
     user_id: 'current_user',
-    title: 'Assignment Graded',
-    message: 'Your Computer Science 101 assignment has been graded.',
+    title: 'Class Reminder',
+    message: 'Your Computer Science 101 class starts @3:00PM ERB 105.',
     type: 'info',
     is_read: true,
-    created_date: '2025-10-19T16:45:00',
+    created_date: '2025-10-19T14:45:00',
     read_date: '2025-10-19T18:00:00',
   },
   {
@@ -60,7 +60,7 @@ export const sampleNotifications = [
   {
     id: '6',
     user_id: 'current_user',
-    title: 'New Resource Available',
+    title: 'New Material Available',
     message: 'Dr. Smith uploaded new lecture notes for CS101.',
     type: 'info',
     is_read: false,
