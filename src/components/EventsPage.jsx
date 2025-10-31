@@ -23,7 +23,14 @@ export default function EventsPage() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [events, setEvents] = useState(sampleEvents);
   const [registeredEvents, setRegisteredEvents] = useState(['1', '2']);
-  const [favoriteEvents, setFavoriteEvents] = useState(['1', '2']);
+  const [favoriteEvents, setFavoriteEvents] = useState(() => {
+    try {
+      const saved = localStorage.getItem('favorite_event_ids');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
 
   // New event form state
@@ -66,14 +73,20 @@ export default function EventsPage() {
   };
 
   const toggleFavorite = (eventId) => {
+    let next;
     if (favoriteEvents.includes(eventId)) {
-      setFavoriteEvents(favoriteEvents.filter(id => id !== eventId));
+      next = favoriteEvents.filter((id) => id !== eventId);
       toast.info('Removed from favorites');
     } else {
-      setFavoriteEvents([...favoriteEvents, eventId]);
+      next = [...favoriteEvents, eventId];
       toast.success('Added to favorites');
     }
+    setFavoriteEvents(next);
+    try {
+      localStorage.setItem('favorite_event_ids', JSON.stringify(next));
+    } catch {}
   };
+
 
   const handleCreateEvent = () => {
     const { title, description, date_time, end_time, location, capacity, category_id, instructor_email } = newEvent;

@@ -50,10 +50,14 @@ export default function AnnouncementsPage() {
     sampleAnnouncements.map((a) => ({ ...a, status: 'approved' }))
   );
 
-  const [favoriteAnnouncements, setFavoriteAnnouncements] = useState([
-    '1',
-    '3',
-  ]);
+  const [favoriteAnnouncements, setFavoriteAnnouncements] = useState(() => {
+    try {
+      const saved = localStorage.getItem('favorite_announcement_ids');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
 
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
 
@@ -117,16 +121,20 @@ export default function AnnouncementsPage() {
 
   // ---- Favorite ----
   const toggleFavorite = (announcementId) => {
+    let next;
     if (favoriteAnnouncements.includes(announcementId)) {
-      setFavoriteAnnouncements(
-        favoriteAnnouncements.filter((id) => id !== announcementId)
-      );
+      next = favoriteAnnouncements.filter((id) => id !== announcementId);
       toast.info('Removed from favorites');
     } else {
-      setFavoriteAnnouncements([...favoriteAnnouncements, announcementId]);
+      next = [...favoriteAnnouncements, announcementId];
       toast.success('Added to favorites');
     }
+    setFavoriteAnnouncements(next);
+    try {
+      localStorage.setItem('favorite_announcement_ids', JSON.stringify(next));
+    } catch {}
   };
+
 
   // ---- Priority helpers ----
   const getPriorityIcon = (priority) => {

@@ -11,8 +11,23 @@ import { toast } from 'sonner';
 
 export default function FavoritesPage() {
   // Initialize with some favorites
-  const [favoriteEventIds, setFavoriteEventIds] = useState(['1', '2']);
-  const [favoriteAnnouncementIds, setFavoriteAnnouncementIds] = useState(['1', '3']);
+  const [favoriteEventIds, setFavoriteEventIds] = useState(() => {
+    try {
+      const saved = localStorage.getItem('favorite_event_ids');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  const [favoriteAnnouncementIds, setFavoriteAnnouncementIds] = useState(() => {
+    try {
+      const saved = localStorage.getItem('favorite_announcement_ids');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
 
   const [favoriteMaterialIds, setFavoriteMaterialIds] = useState(() => {
     try {
