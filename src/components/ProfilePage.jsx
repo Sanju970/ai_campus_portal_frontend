@@ -113,6 +113,18 @@ export default function ProfilePage() {
                     <span>ID: {user.studentId}</span>
                   </div>
                 )}
+                {user?.facultyId && (
+                  <div className="flex items-center gap-2">
+                    <Briefcase className="h-4 w-4 text-muted-foreground" />
+                    <span>ID: {user.facultyId}</span>
+                  </div>
+                )}
+                {user?.adminId && (
+                  <div className="flex items-center gap-2">
+                    <Shield className="h-4 w-4 text-muted-foreground" />
+                    <span>ID: {user.adminId}</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -242,8 +254,8 @@ export default function ProfilePage() {
                 <p>Admin Building, Room 501</p>
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Extension</p>
-                <p>ext. 1234</p>
+                <p className="text-sm text-muted-foreground">Phone</p>
+                <p>555-403-9624</p>
               </div>
             </div>
           )}

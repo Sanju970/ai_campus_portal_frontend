@@ -17,6 +17,8 @@ export const UserRole = {
  * @property {'student'|'faculty'|'admin'} role
  * @property {string} [department]
  * @property {string} [studentId]
+ * @property {string} [facultyId]
+ * @property {string} [adminId]
  * @property {string} joinDate
  * @property {string} [avatar]
  */

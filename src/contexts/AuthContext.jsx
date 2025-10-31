@@ -26,6 +26,8 @@ export function AuthProvider({ children }) {
           ? 'Computer Science'
           : 'Administration',
       studentId: role === 'student' ? 'STU' + Math.floor(Math.random() * 10000) : undefined,
+      facultyId: role === 'faculty' ? 'FAC' + Math.floor(Math.random() * 10000) : undefined,
+      adminId: role === 'admin' ? 'ADM' + Math.floor(Math.random() * 10000) : undefined,
       joinDate: '2023-09-01',
     };
 
