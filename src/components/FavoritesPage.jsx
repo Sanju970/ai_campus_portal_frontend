@@ -101,7 +101,7 @@ export default function FavoritesPage() {
       <div className="space-y-2">
         <h1>Favorites</h1>
         <p className="text-muted-foreground">
-          Your saved events and announcements
+          Your saved events, announcements and materials
         </p>
       </div>
 
