@@ -92,23 +92,6 @@ export default function ProfilePage() {
                   </div>
                   <p className="text-muted-foreground">{user?.email}</p>
                 </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => isEditing ? handleSave() : setIsEditing(true)}
-                >
-                  {isEditing ? (
-                    <>
-                      <Save className="h-4 w-4 mr-2" />
-                      Save
-                    </>
-                  ) : (
-                    <>
-                      <Edit className="h-4 w-4 mr-2" />
-                      Edit Profile
-                    </>
-                  )}
-                </Button>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
