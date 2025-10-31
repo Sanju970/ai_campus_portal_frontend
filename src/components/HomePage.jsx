@@ -18,7 +18,7 @@ export default function HomePage({ onNavigate }) {
   const { user } = useAuth();
 
   const quickLinks = [
-    { title: 'View Favorites', icon: Heart, page: 'events', color: 'bg-red-500' },
+    { title: 'View Favorites', icon: Heart, page: 'favorites', color: 'bg-red-500' },
     { title: 'View Events', icon: Calendar, page: 'events', color: 'bg-green-500' },
     { title: 'Academic Support', icon: GraduationCap, page: 'resources', color: 'bg-purple-500' },
     { title: 'Career Services', icon: Briefcase, page: 'resources', color: 'bg-orange-500' },
